@@ -1,0 +1,188 @@
+{% extends "myapp/base.html" %}
+{%load static%}
+
+
+{% block title %}
+    Pawprints
+{% endblock %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/lostpets.css' %}">
+{% endblock %}
+
+{% block content %}
+  <body>
+    <div class="main-container">
+      <div class="rectangle"><span class="paws-print">PawsPrint</span></div>
+      <div class="flex-row-e">
+        <div class="rectangle-1">
+          <button class="report-case">
+            <a href="{%url 'cases' %}">
+              <span class="rectangle-2">Report Case</span>
+              <div class="plus"></div>
+            </a>
+          </button>
+          <div class="grid"></div>
+          <a href="{%url 'dashboard' %}">
+            <span class="dashboard">Dashboard</span>
+          </a>
+          <div class="search"></div>
+          <a href="{% url 'lostpets'%}">
+            <span class="lost-pets">Lost Pets</span>
+          </a>
+          <div class="paw"></div>
+          <a href="{%url 'adoption' %}">
+            <span class="adoption">Adoption</span>
+          </a>
+          <div class="calendar"></div>
+          <a href="{%url 'events' %}">
+            <span class="events">Events</span>
+          </a>
+          <div class="user"></div>
+          <a href="{%url 'profile' %}">
+            <span class="profile">Profile</span>
+          </a>
+          <div class="settings"></div>
+          <a href="{%url 'wset' %}">
+            <span class="settings-4">Settings</span>
+          </a>
+          <div class="help"></div>
+          <a href="{%url 'about' %}">
+            <span class="help-5">About</span>
+          </a>
+          <span class="terms-and-conditions">Terms and Conditions</span>
+          <div class="terms-and-conditions-6"></div>
+          <div class="logout"></div>
+          <a href="{%url 'land' %}">
+            <span class="logout-7">Logout</span>
+          </a>
+        </div>
+        <span class="find-lost-pets">FIND LOST PETS</span>
+        <div class="rectangle-7"></div>
+        <div class="rectangle-8">
+          <button class="rectangle-button">
+            <span class="tips-span">Tips for Finding Lost Pets</span></button
+          ><span class="tips-span-9"
+            >Use the "Report Case Form" to provide detailed information about
+            any lost or stray pets in your area.<br /><br />Include essential
+            details such as the pet's name, breed, color, distinctive features,
+            last seen location, and your contact information.<br /><br />Make it
+            a habit to check the PawPrints regularly for updates on lost pets in
+            your community.<br /><br />Visit the PawPrints daily or set
+            reminders to stay informed about new submissions and updates.<br /><br />Encourage
+            other pet owners in your community to use the web app PawPrints to
+            report lost pets and share information about found ones.
+            <br /><br />The more people involved, the higher the chances of
+            reuniting lost pets with their owners.<br /><br />If available,
+            enable notifications to receive alerts about new lost pet
+            submissions and updates.<br /><br />Stay informed in real-time and
+            be ready to assist in the search efforts whenever needed.<br /><br />Remember
+            to stay positive and persistent in your search efforts.<br /><br />Your
+            involvement can make a significant difference in reuniting lost pets
+            with their owners.</span
+          >
+        </div>
+        
+        <form method="GET" action="{%url 'lostpets' %}">
+          <div class="rectangle-div">
+            <input type="search" name="q" class="search-span" placeholder="Search by name">
+          </div>
+          <button class="rectangle-button-a"></button>
+          <input type="submit" class="search-span-b" placeholder="SEARCH">
+          ><span class="filter-options-span">Filter Options:</span
+          ><button class="rectangle-button-c">
+          </button
+          ><button class="rectangle-button-f">
+            </button>
+          <button class="rectangle-button-11"></button>
+          <select class="animal-type" name="animal-type">
+            <option value="" disabled selected>Animal Type</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Bird">Bird</option>
+          </select>
+          <select class="color" name="color">
+            <option value=""disabled selected>Color</option>
+            <option value="Brown">Brown</option>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Grey">Grey</option>
+            <option value="Orange">Orange</option>
+            <option value="BlackWhite">Black White</option>
+            <option value="BrownWhite">Brown White</option>
+            <option value="WhiteOrange">White Orange</option>
+            <option value="WhiteGrey">White Grey</option>
+            <option value="BlackGrey">Black Grey</option>
+          </select>
+          <select class="size" name="size">
+            <option value="" disabled selected>Size</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="Big">Big</option>
+          </select>
+        </form> 
+        
+        <div class="lost-found-container">
+          {% for report in lostfound %}
+            <div class="report-card">
+              <div class="report-header">
+                <div class="ellipse"></div>
+                <div class="reporter-info">
+                  <span class="reporter-name">{{ report.reporter_name }}</span>
+                  <br><span class="report-time">{{report.date}} - {{report.last_seen_location}} - {{report.animal_type}} - {{ report.color}}</span>
+                    <h2 class="report-type ">{{ report.report_type }}</h2>
+                </div>
+              </div>
+              <div class="report-content">
+                <div class="report-image">
+                  <img src="{{ report.image.url }}" alt="Report Image">
+                </div>
+                <div class="report-details">
+                  <p class="name-cap">{{ report.name }} </p>
+                  <p class="post-caption">{{ report.post_caption }}</p>
+                  <div class="details-container">
+                    <div class="detail-item">
+                      <span class="description">{{ report.description }}</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="address">● {{ report.address }}</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                      <span class="gender"> ● {{ report.gender }} <span class="tab"></span>
+                        ● {{ report.breed }} <span class="tab"></span>● {{ report.size }} <span class="tab"></span> 
+                        ● {{ report.behavior }}</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="has-collartags"> Collar Tags? {{ report.has_collartags }}</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="phone_no">Phone No:  {{ report.phone_no }} </span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="email">Email: {{ report.email }}</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="facebook">FB: {{ report.facebook }}</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="instagram">IG: {{ report.instagram }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% empty %}
+            <p></p>
+            <p><br><br><br> No results Found</p>
+          {% endfor %}
+          <br><br><br><br><br><br>
+        </div>
+      </div> 
+    </div>
+
+  </body>
+{% endblock %}

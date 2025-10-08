@@ -1,0 +1,102 @@
+{% extends "myapp/base.html" %}
+{%load static%}
+
+
+{% block title %}
+    Pawprints
+{% endblock %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/about.css' %}">
+{% endblock %}
+
+{% block content %}
+  <body>
+    <div class="main-container">
+      <div class="rectangle"><span class="paws-print">PawsPrint</span></div>
+      <div class="flex-row-e">
+        <div class="rectangle-1">
+          <button class="report-case">
+            <a href="{%url 'cases' %}">
+              <span class="rectangle-2">Report Case</span>
+              <div class="plus"></div>
+            </a>
+          </button>
+          <div class="grid"></div>
+          <a href="{%url 'dashboard' %}">
+            <span class="dashboard">Dashboard</span>
+          </a>
+          <div class="search"></div>
+          <a href="{% url 'lostpets'%}">
+            <span class="lost-pets">Lost Pets</span>
+          </a>
+          <div class="paw"></div>
+          <a href="{%url 'adoption' %}">
+            <span class="adoption">Adoption</span>
+          </a>
+          <div class="calendar"></div>
+          <a href="{%url 'events' %}">
+            <span class="events">Events</span>
+          </a>
+          <div class="user"></div>
+          <a href="{%url 'profile' %}">
+            <span class="profile">Profile</span>
+          </a>
+          <div class="settings"></div>
+          <a href="{%url 'wset' %}">
+            <span class="settings-4">Settings</span>
+          </a>
+          <div class="help"></div>
+          <a href="{%url 'about' %}">
+            <span class="help-5">About</span>
+          </a>
+          <span class="terms-and-conditions">Terms and Conditions</span>
+          <div class="terms-and-conditions-6"></div>
+          <div class="logout"></div>
+          <a href="{%url 'logouts' %}">
+            <span class="logout-7" >Logout</span>
+          </a>
+        </div>
+        <span class="about-us">ABOUT US</span
+            ><span class="pawprints-matters"
+              >PawPrints: Where Every Paw Matters</span
+            ><span class="welcome-message"
+              >Welcome to our platform dedicated to the welfare of animals in the
+              Philippines. We are passionate about making a difference in the lives
+              of stray and abandoned animals, promoting responsible pet ownership,
+              and advocating for their rights.</span
+            ><span class="our-mission">Our Mission</span
+            ><span class="mission-details"
+              >At our core, we are driven by a mission to create a more
+              compassionate society where every animal is treated with kindness,
+              respect, and dignity. Through our platform, we strive to:<br /><br />Rescue
+              and rehabilitate stray and abandoned animals, providing them with the
+              care and love they deserve.<br /><br />Educate the community about the
+              importance of responsible pet ownership, including proper care,
+              training, and health considerations.<br /><br />Raise awareness about
+              animal welfare issues and advocate for stronger protections and
+              policies to prevent cruelty and neglect.<br /><br />Facilitate
+              adoptions to find loving forever homes for homeless animals and reduce
+              the stray population.</span
+            ><span class="what-we-do">What We Do</span
+            ><span class="rescue-rehabilitation-education"
+              >Rescue and Rehabilitation<br />Education and Outreach<br />Advocacy<br />Adoption
+              Services<br />Support Services</span
+            ><span class="join-mission-animals"
+              >Join us in our mission to make a difference in the lives of animals.
+              Whether you want to volunteer, foster, donate, or adopt, there are
+              many ways to get involved and help us create a brighter future for
+              animals in need.</span
+            ><span class="get-involved">GET INVOLVED</span
+            ><span class="developer">DEVELOPER</span>
+            <div class="_n"></div>
+            <span class="john-maurice-sison-bsit"
+              >John Maurice P. Sison<br />BSIT - II
+            </span>
+          </div>
+        </div>
+        
+  </body>
+{% endblock %}
