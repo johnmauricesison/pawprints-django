@@ -1,0 +1,89 @@
+{% extends "myapp/base.html" %}
+{%load static%}
+
+
+{% block title %}
+    Pawprints
+{% endblock %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/events.css' %}">
+{%endblock%}
+{%block content%}
+  <body>
+    <div class="main-container">
+      <div class="rectangle"><span class="paws-print">PawsPrint</span></div>
+      <div class="flex-row-e">
+        <div class="rectangle-1">
+          <button class="report-case">
+            <a href="{%url 'cases' %}">
+              <span class="rectangle-2">Report Case</span>
+              <div class="plus"></div>
+            </a>
+          </button>
+          <div class="grid"></div>
+          <a href="{%url 'dashboard' %}">
+            <span class="dashboard">Dashboard</span>
+          </a>
+          <div class="search"></div>
+          <a href="{% url 'lostpets'%}">
+            <span class="lost-pets">Lost Pets</span>
+          </a>
+          <div class="paw"></div>
+          <a href="{%url 'adoption' %}">
+            <span class="adoption">Adoption</span>
+          </a>
+          <div class="calendar"></div>
+          <a href="{%url 'events' %}">
+            <span class="events">Events</span>
+          </a>
+          <div class="user"></div>
+          <a href="{%url 'profile' %}">
+            <span class="profile">Profile</span>
+          </a>
+          <div class="settings"></div>
+          <a href="{%url 'wset' %}">
+            <span class="settings-4">Settings</span>
+          </a>
+          <div class="help"></div>
+          <a href="{%url 'about' %}">
+            <span class="help-5">About</span>
+          </a>
+          <span class="terms-and-conditions">Terms and Conditions</span>
+          <div class="terms-and-conditions-6"></div>
+          <div class="logout"></div>
+          <a href="{%url 'land' %}">
+            <span class="logout-7">Logout</span>
+          </a>
+        </div>
+        <span class="events-calendar">EVENTS CALENDAR</span>
+        
+        <div class="event-container">
+          {% for event in events%}
+            <div class="event-card">
+              <div class="flex-row-def">
+                <span class="april-2024">{% if event.month_year %} {{ event.month_year }}{% endif %}</span>
+              </div>
+              <div class="flex-row-eab">
+                <button class="rectangle-9">
+                  <span class="volunteer-orientation"
+                    >{{event.title}}</span
+                  ></button
+                ><span class="date-time-location"
+                  >Date: {{event.date}}<br />Time: {{event.time}}</span
+                >
+              </div>
+              <span class="location-details"
+                >Location: {{event.location}}<br />Details: {{event.details}}</span>
+            </div>
+          {% endfor %}
+          <br><br>
+        </div>
+      </div>
+    </div>
+        
+    </div>
+  </body>
+{%endblock%}

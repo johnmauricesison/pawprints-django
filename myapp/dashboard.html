@@ -1,0 +1,148 @@
+{% extends "myapp/base.html" %}
+{%load static%}
+
+
+{% block title %}
+    Pawprints
+{% endblock %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/dashboard.css' %}">
+{%endblock%}
+{%block content%}
+  <body>
+    <div class="main-container">
+      <div class="rectangle"><span class="paws-print">PawsPrint</span></div>
+      <div class="flex-row-e">
+        <div class="rectangle-1">
+          <button class="report-case">
+            <a href="{%url 'cases' %}">
+              <span class="rectangle-2">Report Case</span>
+              <div class="plus"></div>
+            </a>
+          </button>
+          <div class="grid"></div>
+          <span class="dashboard">Dashboard</span>
+          <div class="search"></div>
+          <a href="{% url 'lostpets'%}">
+            <span class="lost-pets">Lost Pets</span>
+          </a>
+          <div class="paw"></div>
+          <a href="{%url 'adoption' %}">
+            <span class="adoption">Adoption</span>
+          </a>
+          <div class="calendar"></div>
+          <a href="{%url 'events' %}">
+            <span class="events">Events</span>
+          </a>
+          <div class="user"></div>
+          <a href="{%url 'profile' %}">
+            <span class="profile">Profile</span>
+          </a>
+          <div class="settings"></div>
+          <a href="{%url 'wset' %}">
+            <span class="settings-4">Settings</span>
+          </a>
+          <div class="help"></div>
+          <a href="{%url 'about' %}">
+            <span class="help-5">About</span>
+          </a>
+          <span class="terms-and-conditions">Terms and Conditions</span>
+          <div class="terms-and-conditions-6"></div>
+          <div class="logout"></div>
+          <a href="{%url 'land' %}">
+            <span class="logout-7">Logout</span>
+          </a>
+        </div>
+
+        {% for user_profile in user_profiles %}
+          <span class="dashboard-8">DASHBOARD</span>
+          <div class="rectangle-9">
+            <img src="{{user_profile.picture.url}}" class="n"></img>
+            <div class="flex-column-cf">
+              <button class="rectangle-a">
+                <span class="pet-lover">{{user_profile.tagone}}</span></button
+              ><span class="user-b">User</span
+              ><span class="john-maurice-p-sison">{{user_profile.fname}} {{user_profile.mname}} {{user_profile.lname}}</span
+              ><button class="rectangle-c">
+                <span class="advocate">{{user_profile.tagtwo}}</span></button
+              ><span class="web-application-developer"
+                >{{user_profile.caption}}</span
+              ><button class="rectangle-d">
+                <span class="volunteer">{{user_profile.tagthree}}</span>
+              </button>
+            </div>
+          </div>
+          <div class="rectangle-e">
+            <span class="personal-information">Personal Information:</span
+            ><span class="age">Age: </span><button class="button-20">{{user_profile.age}}</button>
+            <div class="rectangle-f"></div>
+            <span class="course">Course:</span><span class="bsit">{{user_profile.course}}</span
+            ><button class="rectangle-10"></button
+            ><span class="school">School:</span><span class="mseuf">{{user_profile.school}}</span
+            ><button class="rectangle-11"></button
+            ><span class="address">Address:</span
+            ><button class="lucena-city">{{user_profile.city}}</button>
+            <div class="rectangle-12"></div>
+            <span class="no-of-pets">No. of Pets:</span
+            ><button class="Button-9">{{user_profile.numpets}}</button>
+            <div class="rectangle-13"></div>
+          </div>
+        {% endfor %}
+          <span class="learn-advocate">Learn and Advocate</span
+          ><span class="dashboard-section"
+            >At PawPrints, our Dashboard section serves as your central hub for
+            educational resources, advocacy initiatives, and community engagement
+            opportunities. Explore the various features available to you as we
+            work together to create a better world for animals.</span
+          >
+          <div class="rectangle-14">
+            <span class="pet-care-tips"
+              ><br />Keep your pet indoors and/or secure it in your property.<br /><br />Ensure
+              your property is suitably fenced.<br /><br />Attach a tag on your
+              pet’s collar that indicates your pet’s name, as well as your name
+              and contact details.<br /><br />Consider microchipping. A microchip
+              is a permanent electronic identification. The microchip allows vets
+              to scan the dog for owner identification.<br /><br />Always use a
+              leash when taking your pet out. Hold the leash at all times.<br /><br />Constantly
+              supervise your pet when in public.<br /><br />Have your pet
+              spayed/neutered to minimize their urge to roam and find a
+              mate.</span
+            ><button class="rectangle-15"></button
+            ><span class="avoid-losing-pet">Avoid losing your pet</span>
+          </div>
+          <div class="rectangle-16">
+            <span class="pet-care-tips-17">Pet Care Tips</span>
+            <div class="screenshot"></div>
+            <a href="https://www.hillspet.com.ph/pet-care/routine-care/10-responsible-pet-care-tips">
+              <span class="visit">Visit</span>
+            </a>
+          </div>
+          <div class="rectangle-18">
+            <span class="animal-welfare-advocacy">Animal Welfare Advocacy</span>
+            <div class="stray-dogs-nationalgeographic"></div>
+            <a href="https://paws.org.ph/campaigns/">
+              <span class="visit-19">Visit</span>
+            </a>
+          </div>
+          <div class="rectangle-1a">
+            <span class="volunteer-opportunities">Volunteer Opportunities</span>
+            <div class="screenshot-1b"></div>
+            <a href="https://paws.org.ph/volunteer/">
+              <span class="visit-1c">Visit</span>
+            </a>
+          </div>
+          <div class="rectangle-1d">
+            <span class="donate-fundraising">Donate/ Fundraising</span>
+            <div class="stray-dogs-nationalgeographic-1e"></div>
+            <a href="https://paws.org.ph/donate/">
+              <span class="visit-1f">Visit</span>
+            </a>
+          </div>
+      </div>
+    </div>
+
+  </body>
+{%endblock%}
